@@ -1,0 +1,11 @@
+featplug
+
+Plug your 'featured' content in!
+
+- tagline
+
+
+
+<?php if (function_exists('wordpress_render_slideshow')): ?>
+<?php wordpress_render_slideshow(600,250,True,5,'numberposts=25'); ?> 
+<?php endif; ?>
