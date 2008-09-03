@@ -29,13 +29,22 @@ function featplug_widget_init() {
 		$max_items = empty($options['wpb-max-items']) ? '' : $options['wpb-max-items'];
 		$post_filter = empty($options['wpb-post-filter']) ? '' : $options['wpb-post-filter'];
  		$template= empty($options['wpb-template'])? 'simple_banners' : $options['wpb-template'];
+		If (empty($options['wpb-enable-enlarge']))
+			$enlarge=False;
+		Else
+		{
+			If ($options['wpb-enable-enlarge'])
+				$enlarge=True;
+			else
+				$enlarge=False;
+		}
 
 
  		echo $before_widget;
 		echo $before_title . $title . $after_title;
 		
 		echo "<center>";
-		featplug_wp_render($output_width,$output_height,True,$template,$max_items,$post_filter);
+		featplug_wp_render($output_width,$output_height,$enlarge,$template,$max_items,$post_filter);
 		echo "</center>";
 		
 		echo $after_widget;
@@ -55,7 +64,7 @@ function featplug_widget_init() {
 			$options['wpb-max-items'] = strip_tags(stripslashes($_POST['wpb-max-items']));
 			$options['wpb-post-filter'] = strip_tags(stripslashes($_POST['wpb-post-filter']));
 			$options['wpb-template']=strip_tags(stripslashes($_POST['wpb-template']));
-
+			$options['wpb-enable-enlarge']=$_POST['wpb-enable-enlarge'];
 
 			update_option('widget_wpb', $options);
 		}
@@ -67,6 +76,7 @@ function featplug_widget_init() {
 		$max_items = htmlspecialchars($options['wpb-max-items'], ENT_QUOTES);
 		$post_filter = htmlspecialchars($options['wpb-post-filter'], ENT_QUOTES);
 		$template=htmlspecialchars($options['wpb-template'],ENT_QUOTES);
+		$enlarge=$options['wpb-enable-enlarge'];
 
 ?>
 		<div>
@@ -81,8 +91,8 @@ function featplug_widget_init() {
 		<input type="text" id="wpb-output-height" name="wpb-output-height" value="<?php echo $output_height; ?>" /></label>
 
 		<label for="wpb-enable-enlarge" style="line-height:35px;display:block;">Enable Enlarging Images:
-		<input type="radio" id="wpb-enable-enlarge-yes" name="wpb-enable-enlarge" value="Yes">Yes
-		<input type="radio" id="wpb-enable-enlarge-no" name="wpb-enable-enlarge" value="No" checked>No
+		<input type="radio" id="wpb-enable-enlarge-yes" name="wpb-enable-enlarge"  value="1" <?php if ($enlarge) echo "Checked"; ?> >Yes
+		<input type="radio" id="wpb-enable-enlarge-no"  name="wpb-enable-enlarge" value="0"  <?php if (!$enlarge) echo "Checked"; ?> >No
 		</label>
 
 		<label for="wpb-template" style="line-height:35px;display:block;">Template: 

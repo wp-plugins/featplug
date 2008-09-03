@@ -1,4 +1,4 @@
-<?
+<?php
 
 /*  
 	FeatPlug - http://featplug.huseyinuslu.net
@@ -34,8 +34,8 @@ class engine
 	var $dimensions_set=False;
 	var $image_enlarge_enabled=True;
 
-	var $thumbnail_width=60;
-	var $thumbnail_height=60;
+	var $thumbnail_width=50;
+	var $thumbnail_height=50;
 	
 	var $max_items=10;
 	var $story_lenght=100;
