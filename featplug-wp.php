@@ -2,34 +2,22 @@
 
 /*
 
-Plugin Name: Featplug
-Plugin URI: http://featplug.huseyinuslu.net
-Description: Featplug is wordpress plugin that can mine your Wordpress site and generate 'featured' section for your site using the found items.
-Version: 0.60
-Author: Huseyin Uslu
-Author URI: http://www.huseyinuslu.net
+	Plugin Name: Featplug
+	Plugin URI: http://featplug.huseyinuslu.net
+	Description: Featplug is wordpress plugin that can mine your Wordpress site and generate 'featured' section for your site using the found items.
+	Version: 0.60
+	Author: Huseyin Uslu
+	Author URI: http://www.huseyinuslu.net
 
-Featplug
+*/
 
-Huseyin Uslu, < shalafirasitlin@gmail.com >
-http://www.huseyinuslu.net
+/*  
+	FeatPlug - http://featplug.huseyinuslu.net
 
+	Featplug is free for non-commercial use. For commercial usage and redistribution with commercial packages
+	check the plugins webpage http://featplug.huseyinuslu.net
 
-This program is free software; you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation; either version 2 of the License, or
-(at your option) any later version.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program; if not, write to the Free Software
-Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
-Online: http://www.gnu.org/licenses/gpl.txt
-
+	Huseyin Uslu < shalafirasitlin@gmail.com | http://www.huseyinuslu.net >
 */
 
 include 'engine.php'; 

@@ -1,3 +1,16 @@
+<?php
+
+/*  
+	FeatPlug - http://featplug.huseyinuslu.net
+
+	Featplug is free for non-commercial use. For commercial usage and redistribution with commercial packages
+	check the plugins webpage http://featplug.huseyinuslu.net
+
+	Huseyin Uslu < shalafirasitlin@gmail.com | http://www.huseyinuslu.net >
+*/
+
+?>
+
 <script src="<?php echo $this->template_path; ?>/scripts/mootools.v1.11.js" type="text/javascript"></script>
 <script src="<?php echo $this->template_path; ?>/scripts/jd.gallery.js" type="text/javascript"></script>
 <link rel="stylesheet" href="<?php echo $this->template_path; ?>/css/jd.gallery.css" type="text/css" media="screen" />

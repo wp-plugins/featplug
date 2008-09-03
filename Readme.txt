@@ -194,6 +194,15 @@ To see example code & live demos please browse check [here](http://postbanners.h
 * wordpress (optional - can be run on standalone mode)
 * libGD - (php's included gd library is okay)
 
+/*  
+	FeatPlug - http://featplug.huseyinuslu.net
+
+	Featplug is free for non-commercial use. For commercial usage and redistribution with commercial packages
+	check the plugins webpage http://featplug.huseyinuslu.net
+
+	Huseyin Uslu < shalafirasitlin@gmail.com | http://www.huseyinuslu.net >
+*/
+
 == Screenshots ==
 
 Check [Plugin's homepage](http://www.huseyinuslu.net/wp-post-banners/)  and [Examples & Live Demos](http://postbanners.huseyinuslu.net)  for screenshots and demo.
