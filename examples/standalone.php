@@ -1,6 +1,6 @@
 <html>
 <meta>
-<title>Featplug Standalone Demo</tile>
+<title>Featplug Standalone Demo</title>
 </meta>
 <body>
 
@@ -27,9 +27,9 @@ function pump_test_data()
 	$e->layer("STAND_ALONE"); // layer: Standalone
 
 	$e->set_maximum_stories(5); // maximum number of strories to show
-	$e->set_story_lenght(500); // story text lenght
-	$e->set_output_dimensions(500,500); // output image dimensions
-	$e->set_thumbnail_dimensions(60,60); // thumbnail dimensions
+	$e->set_story_lenght(150); // story text lenght
+	$e->set_output_dimensions(500,350); // output image dimensions
+	$e->set_thumbnail_dimensions(50,50); // thumbnail dimensions
 
 	$e->enable_image_enlarging(True); // enlarge images?
 	
@@ -69,14 +69,12 @@ function pump_test_data()
 	$e->set_template("smoothgallery"); // slideshow
 	echo $e->render(); 
 
-	//echo "<h2>Banners:</h2><br>";
-	//$e->set_template("simple_banners"); // banners
-	//$e->set_output_dimensions(250,250); // output image dimensions
-	//echo $e->render(); 
+	echo "<h2>Banners:</h2><br>";
+	$e->set_template("simple_banners"); // banners
+	echo $e->render(); 
 
-	//$e->set_template("debug"); // debug mode
-	//$e->set_output_dimensions(100,100); // output image dimensions
-	//echo $e->render(); 
+	$e->set_template("debug"); // debug mode
+	echo $e->render(); 
 
 
 	$e=null; // release resources

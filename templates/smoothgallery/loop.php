@@ -17,6 +17,6 @@
 		<?php echo $item->content; ?>
 	</p>
 	<a href="<?php echo $item->link; ?>" title="open story" class="open"></a>
-	<img src="<?php echo $item->image; ?>" width="<?php echo $item->width; ?>" height="<?php echo $item->crop; ?>" class="full"/>
-	<img src="<?php echo $item->thumbnail; ?>" class="thumbnail"  />
+	<img src="<?php echo $item->image; ?>" width="<?php echo $item->width; ?>" height="<?php echo $item->crop; ?>" class="full" alt="<?php echo $item->label; ?>">
+	<img src="<?php echo $item->thumbnail; ?>" class="thumbnail" alt="<?php echo $item->label; ?>">
 </div>

@@ -18,7 +18,7 @@ $instance=rand();
 
 <script src="<?php echo $this->template_path; ?>/scripts/mootools.v1.11.js" type="text/javascript"></script>
 <script src="<?php echo $this->template_path; ?>/scripts/jd.gallery.js" type="text/javascript"></script>
-<link rel="stylesheet" href="<?php echo $this->template_path; ?>/css/jd.gallery.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php echo $this->template_path; ?>/css/jd.gallery.css" type="text/css" media="screen">
 
 <style type="text/css">
 #myGallery<?php echo $instance; ?> 
