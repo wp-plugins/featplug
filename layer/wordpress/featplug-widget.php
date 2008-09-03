@@ -10,7 +10,7 @@
 */
 
 
-function widget_postbanners_init() {
+function featplug_widget_init() {
 
 	
 	if ( !function_exists('register_sidebar_widget') || !function_exists('register_widget_control') )
@@ -35,7 +35,7 @@ function widget_postbanners_init() {
 		echo $before_title . $title . $after_title;
 		
 		echo "<center>";
-		wordpress_render($output_width,$output_height,True,$template,$max_items,$post_filter);
+		featplug_wp_render($output_width,$output_height,True,$template,$max_items,$post_filter);
 		echo "</center>";
 		
 		echo $after_widget;

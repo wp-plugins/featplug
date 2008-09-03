@@ -81,14 +81,18 @@ class engine
 		else
 		{
 			$curr_template='';
-			$items=array();
+			$this->items=array();
 		}
 	}
 
 	function __destruct() {
-		$items=null;
+		unset($this->items);
+		$this->items=null;
 	}
 	
+	function destruct() {
+		engine::__destruct();
+	}
 
 	function path()
 	{
@@ -100,7 +104,7 @@ class engine
 				$path= "http://" . $_SERVER['HTTP_HOST'] . $path;
 				break;
 			case $this->layers["WORDPRESS"];
-				$path= get_bloginfo('url') . "/wp-content/plugins/wp-post-banners";
+				$path= get_bloginfo('url') . "/wp-content/plugins/featplug";
 				break;
 		}
 
@@ -110,13 +114,11 @@ class engine
 
 	function add_item($i)
 	{
-		global $items;
-
 		$pattern='/<\s*img [^\>]*src\s*=\s*[\""\']?([^\""\'\s>]*)/i';
 
 		if($this->VALID_CONFIGURATION==True) // if we got valid config
 		{
-			if(sizeof($items)<$this->max_items) // if we still need to find more content
+			if(sizeof($this->items)<$this->max_items) // if we still need to find more content
 			{
 				
 				preg_match_all($pattern,$i->img,$m);
@@ -142,7 +144,7 @@ class engine
 					if ($nw >= $this->output_width)
 					{
 						$i->image=engine::resize_img($img,$this->output_width,$i->height,$i->crop);
-						$items[]=$i;
+						$this->items[]=$i;
 						return;
 					}
 					else if ($this->image_enlarge_enabled)
@@ -151,7 +153,7 @@ class engine
 						$i->width=$this->output_width;
 						$i->crop=$this->output_height;
 						$i->image=engine::resize_img($img,$this->output_width,$i->height,$i->crop);
-						$items[]=$i;
+						$this->items[]=$i;
 						return;
 					}
 
@@ -200,14 +202,13 @@ class engine
 
 	function render()
 	{
-		global $items;
 
 		if($this->VALID_CONFIGURATION==True)
 		{
-			if($items<>NULL)
+			if($this->items<>NULL)
 			{
 				include $this->template_header;
-				foreach($items as $item)
+				foreach($this->items as $item)
 				{
 					include $this->template_loop;
 				}
