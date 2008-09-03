@@ -5,7 +5,7 @@
 Plugin Name: Featplug
 Plugin URI: http://featplug.huseyinuslu.net
 Description: Featplug is wordpress plugin that can mine your Wordpress site and generate 'featured' section for your site using the found items.
-Version: 0.51
+Version: 0.60
 Author: Huseyin Uslu
 Author URI: http://www.huseyinuslu.net
 
