@@ -35,7 +35,7 @@ function featplug_wp_admin_menu()
 { 	
 	if (function_exists('add_options_page')) 
 	{ 			
-		add_options_page('featplug','featplug','manage_options','featplug/layer/wordpress/featplug-wp-options.php'); 			 		
+		add_options_page('FeatPlug','FeatPlug','manage_options','featplug/layer/wordpress/featplug-wp-options.php'); 			 		
 	} 
 }  
 
