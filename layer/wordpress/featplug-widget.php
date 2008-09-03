@@ -130,10 +130,10 @@ function widget_postbanners_init() {
 	}
 
 
-	register_sidebar_widget('Post Banners', 'wpb_widget');
+	register_sidebar_widget('Featplug', 'wpb_widget');
 
 
-	register_widget_control('Post Banners', 'wpb_widget_control');
+	register_widget_control('Featplug', 'wpb_widget_control');
 }
 
 ?>

@@ -1,28 +1,31 @@
-=== WP-Post-Banners ===
+=== FeatPlug ===
 Contributors: raistlinthewiz
-Donate link: http://www.huseyinuslu.net/donate
-Tags: banners, posts, post-banners, graphics, logos
+Donate link: http://featplug.huseyinuslu.net/donate
+Tags: Featured, content, Banners, images, image, slideshow, Thumbs, Thumbnails, Post, posts, Digg, Mine, Featured Content, automatic, AJAX, blog,embed, filter, gallery, link, links, list, media, navigation, page, pages, photo, photos, picture, pictures, plugin, plugins,random, recent, redirect, sidebar, widget, widgets, wordpress
 Requires at least: 2.6
 Tested up to: 2.61
 Stable tag: 0.51
 
-WP-Post-Banners is wordpress plugin that can mine your Wordpress and generate 'featured' section for your site using the
-found items.
+Featplug is a plugin that can mine your Wordpress (or any other Blog/CMS/Forum software's) posts and generates ‘featured content’ section.
 
 == Description ==
 
-WP-Post-Banners is a standalone script / wordpress plugin that can mine your Wordpress posts or any other
+Featplug is a standalone script / wordpress plugin that can mine your Wordpress posts or any other
 data and look for images suiting a given dimension and generates 'featured' section for your site using the
 found items.
 
 The featured section, includes a resized image (banner) with the label, description and link of the related
 post or data.
 
-Currently it supports a Wordpress plugin mode (with widget support) and a standalone mode. It's very easy
-to integrate it to your Wordpress installation or any other blog / cms / forum software even in your
-static data site.
+Featplug is a architectural plugin with input layers and output templates.
 
-Right now it supports two output styles; simple banners and slideshow mode.
+Input Layer -> Featplug -> Output Template
+
+Currently it supports Wordpress and standalone as input layers. But it's very easy
+to integrate it to any other blog / cms / forum software or even in your static site.
+
+
+
 
 = Simple Banners Mode =
 
