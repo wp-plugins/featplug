@@ -32,7 +32,6 @@ function pump_test_data()
 	$e->set_thumbnail_dimensions(50,50); // thumbnail dimensions
 
 	$e->enable_image_enlarging(True); // enlarge images?
-	
 
 	// Start pumping sample stories
 
@@ -49,12 +48,12 @@ function pump_test_data()
 	$e->add_item($p);
 
 	$p=new post_item();
-	$p->img="<img src=\"examples/images/featplug.png\">";
+	$p->img="<img src=\"" . $e->path() . "/examples/images/featplug.png\">";
 	$p->label="featplug";
 	$e->add_item($p);
 
 	$p=new post_item();
-	$p->img="<img src=\"examples/images/featplug2.png\">";
+	$p->img="<img src=\"" . $e->path() . "/examples/images/featplug2.png\">";
 	$p->label="Story Mining";
 	$e->add_item($p);
 

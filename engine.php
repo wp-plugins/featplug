@@ -43,7 +43,7 @@ class engine
 	var $enable_text_stories=False;
 
 	// items
-	var $items;
+	var $items=array();
 
 
 	function layer($layer_type='')
@@ -81,7 +81,6 @@ class engine
 		else
 		{
 			$curr_template='';
-			$this->items=array();
 		}
 	}
 
@@ -126,37 +125,39 @@ class engine
 				for($k=0;$k<$found_images;$k++)
 				{
 					$img=trim($m[1][$k]);
-					engine::calc_image_dimensions($img,$this->output_width,$this->output_height,$nw,$nh);
-
-					$i->crop=$this->output_height;
-					if($nh < $this->output_height)
-					$i->crop=$nh;
-
-					$i->height=$nh;
-					$i->width=$nw;
-
-					$i->thumbnail=engine::resize_img($img,$this->thumbnail_width,$this->thumbnail_height,$this->thumbnail_height);
-
-					$i->label=strip_tags($i->label);
-					$i->content=substr(strip_tags($i->content),0,$this->story_lenght);
-					$i->content=str_replace("\"","'",$i->content);					
-
-					if ($nw >= $this->output_width)
-					{
-						$i->image=engine::resize_img($img,$this->output_width,$i->height,$i->crop);
-						$this->items[]=$i;
-						return;
-					}
-					else if ($this->image_enlarge_enabled)
-					{
-						$i->height=$this->output_height;
-						$i->width=$this->output_width;
+					
+					$img_broken=engine::calc_image_dimensions($img,$this->output_width,$this->output_height,$nw,$nh);
+					if (!$img_broken) // if image link is not broken
+					{	
 						$i->crop=$this->output_height;
-						$i->image=engine::resize_img($img,$this->output_width,$i->height,$i->crop);
-						$this->items[]=$i;
-						return;
-					}
+						if($nh < $this->output_height)
+						$i->crop=$nh;
 
+						$i->height=$nh;
+						$i->width=$nw;
+
+						$i->thumbnail=engine::resize_img($img,$this->thumbnail_width,$this->thumbnail_height,$this->thumbnail_height);
+
+						$i->label=strip_tags($i->label);
+						$i->content=substr(strip_tags($i->content),0,$this->story_lenght);
+						$i->content=str_replace("\"","'",$i->content);					
+
+						if ($nw >= $this->output_width)
+						{
+							$i->image=engine::resize_img($img,$this->output_width,$i->height,$i->crop);
+							$this->items[]=$i;
+							return;
+						}
+						else if ($this->image_enlarge_enabled)
+						{
+							$i->height=$this->output_height;
+							$i->width=$this->output_width;
+							$i->crop=$this->output_height;
+							$i->image=engine::resize_img($img,$this->output_width,$i->height,$i->crop);
+							$this->items[]=$i;
+							return;
+						}
+					}
 
 				}
 				// if found no images
@@ -202,7 +203,7 @@ class engine
 
 	function render()
 	{
-
+		
 		if($this->VALID_CONFIGURATION==True)
 		{
 			if($this->items<>NULL)
@@ -349,11 +350,17 @@ class engine
 	function calc_image_dimensions($src,$mw='',$max_height,&$w,&$h)
 	{
 		$mh='';
-		if(list($w,$h) = @getimagesize($src)) {
+		if(list($w,$h) = @getimagesize($src)) 
+		{
 			foreach(array('w','h') as $v) { $m = "m{$v}";
 			if(${$v} > ${$m} && ${$m}) { $o = ($v == 'w') ? 'h' : 'w';
 			$r = ${$m} / ${$v}; ${$v} = ${$m}; ${$o} = ceil(${$o} * $r); } }
 			}
+
+			if($w!='') // is image link broken?
+				return False; // nope
+			else
+				return True; // yes image link is broken
 		}
 	}
 
