@@ -43,7 +43,7 @@ Featplug is a plugin that can mine your Wordpress (or any other Blog/CMS/Forum s
 
 <center>
 <?php 
-	featplug_wp_render(500,150,True,'imagemenu',6);
+	featplug_wp_render_banners(500,150,True,3);
 ?>
 </center>
 <br><br>
