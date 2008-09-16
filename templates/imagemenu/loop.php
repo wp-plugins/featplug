@@ -11,9 +11,4 @@
 
 ?>
 
-<div>
-	<?php $item_count+=1;?>
-	<h3><?php echo $item->label;?></h3>
-	<img src="<?php echo $item->thumbnail;?>" alt="Photo" />
-	<p><?php echo $item->content;?></p>
-</div>
+<li><a href="<?php echo $item->link;?>" style="background: url(<?php echo $item->image;?>) repeat scroll 0%;" alt="<?php echo $item->label;?>" title="<?php echo $item->label;?>"><?php echo $item->label;?></a></li>

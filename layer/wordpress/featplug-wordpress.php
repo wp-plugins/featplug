@@ -11,6 +11,15 @@
 
 function pump_wordpress_data($filter,&$e)
 {
+	// check if we're running on a Wordpress-MU environment
+	if(function_exists( 'is_site_admin' ))
+		mu_pump_post_data($e);
+	else
+		pump_post_data($filter,&$e);
+}
+
+function pump_post_data($filter,&$e)
+{
 	$posts=get_posts($filter);
 	foreach($posts as $post) 	
 	{ 		
@@ -22,6 +31,18 @@ function pump_wordpress_data($filter,&$e)
 		$p->label=$post->post_title; 		
 		$e->add_item($p); 
 	} 	 	
+}
+
+function mu_pump_post_data(&$e)
+{
+	$blogs = get_last_updated();
+	foreach ($blogs as $b) 
+	{
+		switch_to_blog($b['blog_id']);
+		pump_post_data('',$e);
+		restore_current_blog();
+	}
+
 }
 
 function featplug_wp_render($width,$height,$image_enlarging,$template,$max_stories=10,$filter='')
