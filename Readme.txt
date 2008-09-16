@@ -4,7 +4,7 @@ Donate link: http://featplug.huseyinuslu.net/donate
 Tags: Featured, content, Banners, images, image, slideshow, Thumbs, Thumbnails, Post, posts, Digg, Mine, Featured Content, automatic, AJAX, blog,embed, filter, gallery, link, links, list, media, navigation, page, pages, photo, photos, picture, pictures, plugin, plugins,random, recent, redirect, sidebar, widget, widgets, wordpress
 Requires at least: 2.6
 Tested up to: 2.62
-Stable tag: 0.61
+Stable tag: 0.62
 
 Featplug is a plugin that can mine your Wordpress (or any other Blog/CMS/Forum software's) posts and generates ‘featured content’ section.
 
