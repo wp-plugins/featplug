@@ -517,7 +517,13 @@ var gallery = {
 			var carouselInnerWidth = this.carouselInner.offsetWidth;
 			var diffWidth = carouselWidth / 2;
 			var scrollPos = position-diffWidth;
+			try {
 			this.carouselWrapper.elementScroller.scrollTo(scrollPos,0);
+			}
+			catch(e) {
+			this.carouselWrapper.elementScroller.scrollTo = (scrollPos,0);
+			}
+
 		}
 	},
 	initInfoSlideshow: function() {
