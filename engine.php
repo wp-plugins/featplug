@@ -119,14 +119,21 @@ class engine
 		{
 			if(sizeof($this->items)<$this->max_items) // if we still need to find more content
 			{
-				
 				preg_match_all($pattern,$i->img,$m);
+
 				$found_images=sizeof($m[1]);
 				for($k=0;$k<$found_images;$k++)
 				{
 					$img=trim($m[1][$k]);
-					
-					$img_broken=engine::calc_image_dimensions($img,$this->output_width,$this->output_height,$nw,$nh);
+
+					if($this->image_enlarge_enabled) // try to guess image from cache
+						$cache_guess=engine::guess_image_from_cache($img,$nw,$nh);
+
+					if($cache_guess)
+						$img_broken=False; // if we found a matching file on cache, it means its not broken	
+					else	
+						$img_broken=engine::calc_image_dimensions($img,$this->output_width,$this->output_height,$nw,$nh);							
+
 					if (!$img_broken) // if image link is not broken
 					{	
 						$i->crop=$this->output_height;
@@ -135,6 +142,7 @@ class engine
 
 						$i->height=$nh;
 						$i->width=$nw;
+
 
 						$i->thumbnail=engine::resize_img($img,$this->thumbnail_width,$this->thumbnail_height,$this->thumbnail_height);
 
@@ -203,7 +211,6 @@ class engine
 
 	function render()
 	{
-		
 		if($this->VALID_CONFIGURATION==True)
 		{
 			if($this->items<>NULL)
@@ -345,6 +352,60 @@ class engine
 		}
 		
 		return $code;
+	}
+
+	function guess_image_from_cache($img,&$w,&$h)
+	{
+
+		$img=basename($img);
+		$filename = dirname(__FILE__) . "/cache/";
+		$filename.= $this->output_width  . ".";
+		$filename.= $this->output_height . "."; 
+		$filename.= $this->output_height . "."; 
+		$filename.= $img;
+
+		// test a exact width x height x crop match
+		if(file_exists($filename))
+		{
+			$w=$this->output_width;
+			$h=$this->output_height;
+			return True;
+		}
+
+		// test a semi-exact match with width x height
+		$filename = dirname(__FILE__) . "/cache/";
+		$filename.= $this->output_width  . ".";
+		$filename.= $this->output_height . "."; 
+		$filename.= "*."; 
+		$filename.= $img;
+
+		foreach(glob($filename) as $f)
+		{
+			$f=basename($f);
+			$parts=explode(".",$f);
+			$w=$parts[0];	
+			$h=$parts[1];
+			return True;
+			
+		}
+
+		// try match using width
+		$f_pattern = dirname(__FILE__) . "/cache/*" . $img;
+		foreach (glob($f_pattern) as $filename) 
+		{
+		    $filename=basename($filename);
+		    $parts=explode(".",$filename);
+
+		    // try a width match
+		    if( $parts[0]==$this->output_width )
+		    {
+			$w=$parts[0];	
+			$h=$parts[1];
+			return True;
+		    }
+
+		}
+		return False; // no matches.. :/
 	}
 
 	function calc_image_dimensions($src,$mw='',$max_height,&$w,&$h)
