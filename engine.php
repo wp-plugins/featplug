@@ -130,9 +130,9 @@ class engine
 						$cache_guess=engine::guess_image_from_cache($img,$nw,$nh);
 
 					if($cache_guess)
-						$img_broken=False; // if we found a matching file on cache, it means its not broken	
+							$img_broken=False; // if we found a matching file on cache, it means its not broken	
 					else	
-						$img_broken=engine::calc_image_dimensions($img,$this->output_width,$this->output_height,$nw,$nh);							
+							$img_broken=engine::calc_image_dimensions($img,$this->output_width,$this->output_height,$nw,$nh);	
 
 					if (!$img_broken) // if image link is not broken
 					{	
@@ -142,8 +142,6 @@ class engine
 
 						$i->height=$nh;
 						$i->width=$nw;
-
-
 						$i->thumbnail=engine::resize_img($img,$this->thumbnail_width,$this->thumbnail_height,$this->thumbnail_height);
 
 						$i->label=strip_tags($i->label);
@@ -172,8 +170,9 @@ class engine
 				if($this->enable_text_stories)
 					engine::render_text_story($i->content);
 			}
-
 		}
+
+
 	}
 	
 	function set_output_dimensions($width,$height)
@@ -410,6 +409,15 @@ class engine
 
 	function calc_image_dimensions($src,$mw='',$max_height,&$w,&$h)
 	{
+		// check image with fsockopen to ensure we don't wait quite long
+		$timeout = 3;
+		$old = ini_set('default_socket_timeout', $timeout);
+		$fp = @fopen($src, 'r');
+		ini_set('default_socket_timeout', $old);
+
+		if (!$fp) // timed out
+			return False;
+	
 		$mh='';
 		if(list($w,$h) = @getimagesize($src)) 
 		{
