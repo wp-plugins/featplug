@@ -3,21 +3,21 @@
 /*
 
 	Plugin Name: Featplug
-	Plugin URI: http://featplug.huseyinuslu.net
+	Plugin URI: http://www.featplug.com
 	Description: Featplug is wordpress plugin that can mine your Wordpress site and generate 'featured' section using the found items.
-	Version: 0.63
+	Version: 0.64
 	Author: Huseyin Uslu
-	Author URI: http://www.huseyinuslu.net
+	Author URI: http://www.regularsexpressions.com
 
 */
 
 /*  
-	FeatPlug - http://featplug.huseyinuslu.net
+	FeatPlug - http://www.featplug.com
 
 	Featplug is free for non-commercial use. For commercial usage and redistribution with commercial packages
 	check the plugins webpage http://featplug.huseyinuslu.net
 
-	Huseyin Uslu < shalafirasitlin@gmail.com | http://www.huseyinuslu.net >
+	Huseyin Uslu < shalafirasitlin@gmail.com | http://www.regularsexpressions.com >
 */
 
 include_once 'engine.php'; 
